@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        body {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .oBox {
+            width: 224px;
+            float: left;
+            margin-right: 3px;
+            margin-bottom: 5px;
+        }
+        
+        .oBox .pic {
+            width: 224px;
+            height: 340px;
+            overflow: hidden;
+            display: block;
+            position: relative;
+        }
+        
+        .oBox .price {
+            margin: 4px 0px;
+            display: inline-block;
+            font-size: 16px;
+            color: #f36;
+            margin-right: 2px;
+        }
+        
+        .oBox .to {
+            display: block;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .oBox a:hover {
+            color: #f36
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript" src="js\jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(function() {
+        function RenderPage() {
+            this.init();
+            //初始化
+            this.html;
+        }
+        RenderPage.prototype = {
+            constructor: RenderPage,
+            init: function() {
+                var opt = {
+                    url: "http://mce.meilishuo.com/jsonp/get/3?offset=0&frame=1&trace=0&limit=10&endId=0&pid=106888&_=1526528205879",
+                    //接口地址
+                    type: "GET",
+                    //发送方式
+                    dataType: "jsonp", // 返回的数据类型，设置为JSONP方式
+                }
+
+                $.ajax(opt).then(this.reder);
+                //利用ajax函数进行获取并执行下一个函数
+            },
+            reder(res) {
+                var result = res.data.list;
+                //先获取到响应的json
+                result.forEach(function(item) {
+                    // 循环遍历每一个数据
+                    // console.log(result)
+                    this.html += `
+                    <div class="oBox">
+                        <img class="pic" src="${item.image}" alt="">
+                        <span class="price">￥<i>${item.discountPrice}</i></span>
+                        <a href="" id="${item.userId}" class="to">${item.title}</a>
+                    </div>
+                `
+                        // 拼接字符串
+                }.bind(this));
+                // console.log(res)
+                $("body").html(this.html)
+                    // 讲数据加载到页面
+            }
+        }
+        new RenderPage()
+    });
+</script>
+
+</html>

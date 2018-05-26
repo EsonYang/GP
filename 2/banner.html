@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>banner</title>
+    <link rel="stylesheet" href="libs/reset.css">
+    <style type="text/css">
+        .slider {
+            width: 1000px;
+            height: 485px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+        }
+        
+        .slider .slider_main {
+            position: absolute;
+        }
+        
+        .slider .slider_main li {
+            width: 1000px;
+            height: 485px;
+            float: left;
+        }
+        
+        .slider .slider_main img {
+            width: 1000px;
+            height: 485px;
+        }
+        
+        .slider .slider_nav {
+            width: 160px;
+            height: 15px;
+            bottom: 15px;
+            left: 40%;
+            position: absolute;
+            border: 1px solid #ff0000;
+            text-align: center;
+        }
+        
+        .slider .slider_nav li {
+            float: left;
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+            background: #ccc;
+            text-align: center;
+            margin-left: 10px;
+            border-radius: 50%;
+        }
+        
+        .slider-nav .on {
+            background: #f73f07;
+        }
+        
+        .slider .slider_nav li.on {
+            background: #f73f07;
+        }
+        
+        .slider .sliderPreNext .slider_pre,
+        .slider .sliderPreNext .slider_next {
+            width: 51px;
+            top: 46%;
+            height: 51px;
+            position: absolute;
+            display: inline-block;
+            zoom: 1;
+            z-index: 8;
+        }
+        
+        .slider .sliderPreNext .slider_pre {
+            left: 10px;
+        }
+        
+        .slider .sliderPreNext .slider_next {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider" id="sliderBox">
+        <ul class="slider_main" id="slider_main">
+            <li class="111">
+                <a href="#"><img src="imgs/1.jpg" alt="" /></a>
+            </li>
+            <li class="222">
+                <a href="#"><img src="imgs/2.jpg" alt="" /></a>
+            </li>
+            <li class="333">
+                <a href="#"><img src="imgs/3.jpg" alt="" /></a>
+            </li>
+            <li class="444">
+                <a href="#"><img src="imgs/4.jpg" alt="" /></a>
+            </li>
+            <li class="555">
+                <a href="#"><img src="imgs/5.jpg" alt="" /></a>
+            </li>
+        </ul>
+        <div class="sliderPreNext">
+            <a class="slider_pre" id="pre" href="javascript:;">上一个</a>
+            <a class="slider_next" id="next" href="javascript:;">下一个</a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="libs/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="libs/text.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#sliderBox").BannerPlugin({
+            playAuto: false,
+            prev: '#pre',
+            next: '#next',
+        });
+    });
+</script>
+
+</html>
